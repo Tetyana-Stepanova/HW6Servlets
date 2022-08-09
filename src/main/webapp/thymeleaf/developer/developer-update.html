@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Developer update</title>
+</head>
+<body>
+<h2>Enter information to update the developer record</h2>
+<form  action="/developer/update" method="post">
+  <p>FirstName : <input type="text" value="" name="setFirstName" id="setFirstName"></p>
+  <p>LastName : <input type="text" value="" name="setLastName" id="setLastName"></p>
+  <p>Age : <input type="text" value="" name="setAge" id="setAge"></p>
+  <p>Gender : <input type="text" value="" name="setGender" id="setGender"> Enter something from: MALE, FEMALE</p>
+  <p>City : <input type="text" value="" name="setCity" id="setCity"></p>
+  <p>Salary : <input type="text" value="" name="setSalary" id="setSalary"></p>
+  <p>CompaniesId : <input type="text" value="" name="setCompaniesId" id="setCompaniesId"></p>
+  <button type="submit" style="width:100px;">Update</button>
+</form>
+<br>
+<h4 style="color:#00ff00" th:if="${errorMessage} == 'true'" th:text="${errorMessage}"></h4>
+<h4 style="color:#ff0000" th:if="${errorMessage.length()} > 4" th:text="'Error: ' + ${errorMessage}"></h4>
+<br>
+<form action="/developer" method="get">
+  <button type="submit" style="width:100px;">back</button>
+</form>
+</body>
+</html>

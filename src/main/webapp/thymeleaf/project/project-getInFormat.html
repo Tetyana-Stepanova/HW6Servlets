@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Project getAllBySpecialFormat</title>
+</head>
+<body>
+<style>
+        .frame table, .frame table td {
+            border: 1px solid black;
+        }
+    </style>
+<h2>Click the button to get a list of all projects in a special format</h2>
+<form  action="/project/getInFormat" method="post">
+  <button type="submit" style="width:200px;">getAllInSpecialFormat</button>
+</form>
+<br>
+<div class="frame" th:if="${projects} != 'null'">
+  <table>
+    <colgroup style="background-color: bisque;">
+      <col style="background-color: #c4daff;">
+      <col>
+    </colgroup>
+    <thead>
+    <tr>
+      <td>releaseDate</td>
+      <td>projectName</td>
+      <td>developerCount</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="project: ${projects}">
+      <td th:text="${ProjectDaoService.project.releaseDate}"></td>
+      <td th:text="${ProjectDaoService.project.projectName}"></td>
+      <td th:text="${ProjectDaoService.project.developerCount}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<h4 style="color:#ff0000" th:if="${errorMessage} != ''" th:text="'Error: ' + ${errorMessage}"></h4>
+<br>
+<form action="/project" method="get">
+  <button type="submit" style="width:200px;">back</button>
+</form>
+</body>
+</html>

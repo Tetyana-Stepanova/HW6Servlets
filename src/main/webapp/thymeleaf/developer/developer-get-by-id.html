@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Developer getById</title>
+</head>
+<body>
+<style>
+        .frame table, .frame table td {
+            border: 1px solid black;
+        }
+    </style>
+<h2>Fill out the form to get information about the customer by his ID.</h2>
+<form  action="/developer/get-by-id" method="post">
+    <p>Id : <input type="text" value="" name="setId" id="setId"></p>
+    <button type="submit" style="width:200px;">Get</button>
+</form>
+<br>
+<div class="frame" th:if="${developer} != ''">
+    <table>
+        <colgroup style="background-color: bisque;">
+            <col style="background-color: #c4daff;">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <td>id</td>
+            <td>firstName</td>
+            <td>lastName</td>
+            <td>age</td>
+            <td>gender</td>
+            <td>city</td>
+            <td>salary</td>
+            <td>companiesId</td>
+        </tr>
+        </thead>
+        <tbody>
+        <div th:if="${developer} == 'null'">
+            <tr>
+                <td style="color:#ff0000">null</td>
+                <td style="color:#ff0000">null</td>
+                <td style="color:#ff0000">null</td>
+                <td style="color:#ff0000">null</td>
+                <td style="color:#ff0000">null</td>
+                <td style="color:#ff0000">null</td>
+                <td style="color:#ff0000">null</td>
+                <td style="color:#ff0000">null</td>
+            </tr>
+        </div>
+        <div th:if="${developer} != 'null'">
+            <tr>
+                <td th:text="${developer.developersId}"></td>
+                <td th:text="${developer.firstName}"></td>
+                <td th:text="${developer.lastName}"></td>
+                <td th:text="${developer.age}"></td>
+                <td th:text="${developer.gender}"></td>
+                <td th:text="${developer.city}"></td>
+                <td th:text="${developer.salary}"></td>
+                <td th:text="${developer.companiesId}"></td>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+</div>
+<h4 style="color:#ff0000" th:if="${errorMessage} != ''" th:text="'Error: ' + ${errorMessage}"></h4>
+<br>
+<form action="/developer" method="get">
+    <button type="submit" style="width:200px;">back</button>
+</form>
+</body>
+</html>

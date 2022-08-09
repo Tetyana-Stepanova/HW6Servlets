@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Project getAll</title>
+</head>
+<body>
+<style>
+        .frame table, .frame table td {
+            border: 1px solid black;
+        }
+    </style>
+<h2>Enter the "Get" button to get all project records</h2>
+<form  action="/project/getAll" method="post">
+  <button type="submit" style="width:200px;">Get</button>
+</form>
+<br>
+<div class="frame" th:if="${projects} != 'null'">
+  <table>
+    <colgroup style="background-color: bisque;">
+      <col style="background-color: #c4daff;">
+      <col>
+    </colgroup>
+    <thead>
+    <tr>
+      <td>id</td>
+      <td>name</td>
+      <td>description</td>
+      <td>releaseDate</td>
+      <td>companiesId</td>
+      <td>customerId</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="project: ${projects}">
+      <td th:text="${project.projectId}"></td>
+      <td th:text="${project.projectName}"></td>
+      <td th:text="${project.projectDescription}"></td>
+      <td th:text="${project.releaseDate}"></td>
+      <td th:text="${project.companiesId}"></td>
+      <td th:text="${project.customerId}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<h4 style="color:#ff0000" th:if="${errorMessage} != ''" th:text="'Error: ' + ${errorMessage}"></h4>
+<br>
+<form action="/project" method="get">
+  <button type="submit" style="width:200px;">back</button>
+</form>
+</body>
+</html>

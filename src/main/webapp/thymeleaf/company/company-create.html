@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Company create</title>
+</head>
+<body>
+<h2>Enter data to create a new company record</h2>
+<form  action="/company/create" method="post">
+    <p>Name : <input type="text" value="" name="setName" id="setName"></p>
+    <p>Description : <input type="text" value="" name="setDescription" id="setDescription"></p>
+    <button type="submit" style="width:100px;">Create</button>
+</form>
+<br>
+<h4 style="color:#00ff00" th:if="${companyId.length()} != 0" th:text="'Result: ' + ${companyId}"></h4>
+<h4 style="color:#ff0000" th:if="${errorMessage.length()} != 0" th:text="'Error: ' + ${errorMessage}"></h4>
+<br>
+<form action="/company" method="get">
+    <button type="submit" style="width:100px;">back</button>
+</form>
+</body>
+</html>

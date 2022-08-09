@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Skill create</title>
+</head>
+<body>
+<h2>Enter data to create a new skill record </h2>
+<form  action="/skill/create" method="post">
+    <p>Language : <input type="text" value="" name="setDevLanguage" id="setDevLanguage"></p>
+    <p>Skill Level : <input type="text" value="" name="setSkillLevel" id="setSkillLevel"></p>
+    <button type="submit" style="width:100px;">Create</button>
+</form>
+<br>
+<h4 style="color:#00ff00" th:if="${skillId} != ''" th:text="'Result: ' + ${skillId}"></h4>
+<h4 style="color:#ff0000" th:if="${errorMessage} != ''" th:text="'Error: ' + ${errorMessage}"></h4>
+<br>
+<form action="/skill" method="get">
+    <button type="submit" style="width:100px;">back</button>
+</form>
+</body>
+</html>

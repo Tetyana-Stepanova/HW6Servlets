@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Skill getAll</title>
+</head>
+<body>
+<style>
+        .frame table, .frame table td {
+            border: 1px solid black;
+        }
+    </style>
+<h2>Click on the "Get" button to get information about all skills</h2>
+<form  action="/skill/getAll" method="post">
+  <button type="submit" style="width:100px;">Get</button>
+</form>
+<br>
+<div class="frame" th:if="${skills} != 'null'">
+  <table>
+    <colgroup style="background-color: bisque;">
+      <col style="background-color: #c4daff;">
+      <col>
+    </colgroup>
+    <thead>
+    <tr>
+      <td>id</td>
+      <td>devLanguage</td>
+      <td>skillLevel</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="skill: ${skills}">
+      <td th:text="${skill.skillsId}"></td>
+      <td th:text="${skill.devLanguage}"></td>
+      <td th:text="${skill.skillLevel}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<h4 style="color:#ff0000" th:if="${errorMessage} != ''" th:text="'Error: ' + ${errorMessage}"></h4>
+<br>
+<form action="/skill" method="get">
+  <button type="submit" style="width:100px;">back</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Project getSalaryById</title>
+</head>
+<body>
+<style>
+        .frame table, .frame table td {
+            border: 1px solid black;
+        }
+    </style>
+<h2>Enter the project ID to get information about its cost</h2>
+<form  action="/project/getSalaryById" method="post">
+    <p>Id : <input type="text" value="" name="setId" id="setId"></p>
+    <button type="submit" style="width:200px;">GetDevSalaryByProjectId</button>
+</form>
+<br>
+<div class="frame" th:if="${cost} != ''">
+    <table>
+        <colgroup style="background-color: bisque;">
+            <col style="background-color: #c4daff;">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <td>cost</td>
+        </tr>
+        </thead>
+        <tbody>
+        <div th:if="${cost} != 0">
+            <tr>
+                <td th:text="${cost}"></td>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+</div>
+<h4 style="color:#ff0000" th:if="${errorMessage} != ''" th:text="'Error: ' + ${errorMessage}"></h4>
+<br>
+<form action="/project" method="get">
+    <button type="submit" style="width:200px;">back</button>
+</form>
+</body>
+</html>
